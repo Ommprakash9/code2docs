@@ -1,0 +1,147 @@
+You are a senior full-stack engineer and product designer.
+
+Build a fully functional, production-grade SaaS web application named:
+
+Code2Docs – AI-Enhanced Documentation Generator
+
+This is a REAL working application, not a UI demo and not a developer scaffold.
+The UI must be professional, elegant, and startup-grade — not overly colorful or flashy.
+
+================================================
+CORE PRODUCT PURPOSE
+================================================
+
+Code2Docs allows developers to:
+- Sign up and log in securely
+- Paste a public GitHub repository URL
+- Automatically generate professional documentation using AI
+- View, copy, and download generated documents
+
+Documentation types:
+- README
+- BRD (Business Requirements Document)
+- TRD (Technical Requirements Document)
+- TEST Strategy Document
+
+================================================
+TECH STACK (USE THIS EXACTLY)
+================================================
+
+Frontend:
+- React
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Dark theme by default
+
+Backend:
+- Node.js with Express
+- GitHub REST API (to fetch repository files)
+- OpenAI API (for documentation generation)
+
+Auth:
+- Email/password authentication (JWT-based)
+
+Database:
+- SQLite (simple, local, production-ready for demo)
+- Store users, projects, and generated documents
+
+================================================
+DESIGN PRINCIPLES (IMPORTANT)
+================================================
+
+- Dark, elegant UI (black / charcoal / deep blue)
+- Minimal but premium color usage (blue, violet accents only)
+- Glassmorphism used subtly (cards, modals)
+- Clean typography and spacing
+- Smooth, professional animations
+- NO bright rainbow colors
+- NO flashy gradients everywhere
+
+The app should look like a serious developer SaaS used in real companies.
+
+================================================
+PAGES & FEATURES
+================================================
+
+1. Landing Page
+- Clean hero section
+- Small badge: “AI-Powered Documentation”
+- Headline:
+  “From Code to Clarity”
+  (apply subtle gradient only to the word “Clarity”)
+- Short professional subtitle explaining GitHub → AI docs
+- Buttons:
+  “Get Started”
+  “View Demo”
+- Smooth fade-in animations
+
+2. Authentication
+- Login page
+- Signup page
+- Modern dark form UI
+- Clear validation and error states
+
+3. Dashboard (Core Feature Page)
+- Input field for GitHub repository URL
+- “Generate Documentation” primary button
+- Real loading state while processing
+- Clear success and error feedback
+
+Document cards:
+- README
+- BRD
+- TRD
+- TEST
+
+Each card:
+- Clean icon
+- Hover elevation
+- Click to open document viewer
+
+4. Backend Logic (MUST BE REAL)
+- Fetch repository structure from GitHub
+- Ignore irrelevant folders (node_modules, build, dist, .git)
+- Combine relevant files
+- Send content to OpenAI using structured prompts
+- Generate each document type separately
+- Save results to database
+
+5. Documentation Viewer
+- Tabbed interface (README | BRD | TRD | TEST)
+- Markdown rendering
+- Copy to clipboard
+- Download as .md file
+
+================================================
+CRAZY FEATURES (BUT PROFESSIONAL)
+================================================
+
+- Per-document generation (not one combined output)
+- Generation progress indicator
+- Regenerate individual documents
+- Save history per repository
+- Clean error handling for invalid repos
+
+================================================
+QUALITY REQUIREMENTS
+================================================
+
+- Clean, readable, modular code
+- Proper folder structure
+- Environment variables for API keys
+- No hardcoded secrets
+- Comments explaining architecture
+- App must run successfully in Replit
+
+================================================
+FINAL OBJECTIVE
+================================================
+
+Deliver a COMPLETE, WORKING SaaS application that:
+- Actually generates documentation using AI
+- Looks professional and production-ready
+- Is suitable for portfolio, internship, and final-year evaluation
+- Feels like a real developer tool, not a toy UI
+
+Build the project end-to-end and ensure it runs successfully.
