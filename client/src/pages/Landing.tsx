@@ -1,8 +1,17 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { FileText, Github, Zap, BookOpen, Clock, Download, Share2, Layers, CheckCircle } from "lucide-react";
+import { FileText, Github, Zap, BookOpen, Clock, Download, Share2, Layers, CheckCircle, Loader2 } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { api } from "@shared/routes";
+import { useToast } from "@/hooks/use-toast";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { apiRequest } from "@/lib/queryClient";
 
 export default function Landing() {
   return (

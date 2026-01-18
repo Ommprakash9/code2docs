@@ -109,6 +109,21 @@ export const api = {
       },
     },
   },
+  contact: {
+    submit: {
+      method: 'POST' as const,
+      path: '/api/contact',
+      input: z.object({
+        name: z.string().min(1, "Name is required"),
+        email: z.string().email("Invalid email address"),
+        message: z.string().min(1, "Message is required"),
+      }),
+      responses: {
+        200: z.object({ message: z.string() }),
+        400: errorSchemas.validation,
+      },
+    },
+  },
 };
 
 // ============================================

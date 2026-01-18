@@ -123,6 +123,19 @@ export async function registerRoutes(
     res.json(doc);
   });
 
+  app.post(api.contact.submit.path, async (req, res) => {
+    try {
+      const input = api.contact.submit.input.parse(req.body);
+      await storage.createContactMessage(input);
+      res.status(200).json({ message: "Thank you! Your message has been received." });
+    } catch (err) {
+      if (err instanceof z.ZodError) {
+        return res.status(400).json({ message: err.errors[0].message });
+      }
+      res.status(500).json({ message: "Something went wrong. Please try again." });
+    }
+  });
+
   app.post(api.documents.generate.path, isAuthenticated, async (req, res) => {
     const projectId = Number(req.params.id);
     const project = await storage.getProject(projectId);
@@ -150,6 +163,19 @@ export async function registerRoutes(
     }
 
     res.status(202).json(newDocs);
+  });
+
+  app.post(api.contact.submit.path, async (req, res) => {
+    try {
+      const input = api.contact.submit.input.parse(req.body);
+      await storage.createContactMessage(input);
+      res.status(200).json({ message: "Thank you! Your message has been received." });
+    } catch (err) {
+      if (err instanceof z.ZodError) {
+        return res.status(400).json({ message: err.errors[0].message });
+      }
+      res.status(500).json({ message: "Something went wrong. Please try again." });
+    }
   });
 
   app.get("/api/documents/:id/pdf", isAuthenticated, async (req, res) => {

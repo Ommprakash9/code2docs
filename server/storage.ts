@@ -1,4 +1,4 @@
-import { users, projects, documents, type User, type InsertUser, type Project, type InsertProject, type Document, type InsertDocument } from "@shared/schema";
+import { users, projects, documents, contactMessages, type User, type InsertUser, type Project, type InsertProject, type Document, type InsertDocument, type ContactMessage, type InsertContactMessage } from "@shared/schema";
 import { db } from "./db";
 import { eq, desc } from "drizzle-orm";
 
@@ -20,6 +20,7 @@ export interface IStorage {
   createDocument(document: InsertDocument): Promise<Document>;
   updateDocumentStatus(id: number, status: string, content?: string): Promise<Document>;
   getProjectWithDocuments(projectId: number): Promise<(Project & { documents: Document[] }) | undefined>;
+  createContactMessage(message: InsertContactMessage): Promise<ContactMessage>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -87,6 +88,11 @@ export class DatabaseStorage implements IStorage {
     if (!project) return undefined;
     const docs = await this.getDocumentsByProject(projectId);
     return { ...project, documents: docs };
+  }
+
+  async createContactMessage(message: InsertContactMessage): Promise<ContactMessage> {
+    const [msg] = await db.insert(contactMessages).values(message).returning();
+    return msg;
   }
 }
 

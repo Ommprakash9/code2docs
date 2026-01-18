@@ -49,21 +49,32 @@ export const documentsRelations = relations(documents, ({ one }) => ({
   }),
 }));
 
+export const contactMessages = pgTable("contact_messages", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  message: text("message").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
 // === BASE SCHEMAS ===
 
 export const insertUserSchema = createInsertSchema(users).omit({ id: true, createdAt: true });
 export const insertProjectSchema = createInsertSchema(projects).omit({ id: true, userId: true, createdAt: true });
 export const insertDocumentSchema = createInsertSchema(documents).omit({ id: true, projectId: true, createdAt: true, updatedAt: true });
+export const insertContactMessageSchema = createInsertSchema(contactMessages).omit({ id: true, createdAt: true });
 
 // === EXPLICIT API CONTRACT TYPES ===
 
 export type User = typeof users.$inferSelect;
 export type Project = typeof projects.$inferSelect;
 export type Document = typeof documents.$inferSelect;
+export type ContactMessage = typeof contactMessages.$inferSelect;
 
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type InsertProject = z.infer<typeof insertProjectSchema>;
 export type InsertDocument = z.infer<typeof insertDocumentSchema>;
+export type InsertContactMessage = z.infer<typeof insertContactMessageSchema>;
 
 // Request types
 export type CreateProjectRequest = InsertProject;
@@ -72,5 +83,14 @@ export type CreateDocumentRequest = {
   type: string;
 };
 
-// Response types
-export type ProjectWithDocuments = Project & { documents: Document[] };
+export const contactMessages = pgTable("contact_messages", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  message: text("message").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const insertContactMessageSchema = createInsertSchema(contactMessages).omit({ id: true, createdAt: true });
+export type ContactMessage = typeof contactMessages.$inferSelect;
+export type InsertContactMessage = z.infer<typeof insertContactMessageSchema>;
