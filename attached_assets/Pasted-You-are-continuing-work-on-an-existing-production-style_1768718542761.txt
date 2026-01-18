@@ -1,0 +1,223 @@
+You are continuing work on an existing production-style SaaS project called:
+
+Code2Docs – AI-Enhanced Documentation Generator
+
+IMPORTANT RULES (STRICT):
+- Do NOT redesign or refactor existing UI.
+- Do NOT remove or break current features.
+- Do NOT change existing backend logic unless explicitly required.
+- ONLY ADD the requested sections and functionality.
+- Maintain the current dark, professional, enterprise SaaS theme.
+- This is a user-facing product, not a developer scaffold.
+
+================================================
+1. ADD INFORMATIONAL SECTION (LANDING PAGE)
+================================================
+
+Add a new section below the existing Hero and Features sections.
+
+SECTION TITLE:
+“Why Waste Time When AI Can Do It Better?”
+
+Subtitle:
+“Powered by advanced AI and built for modern development teams”
+
+Create a 4-column responsive grid of feature cards:
+
+1. Instant GitHub Integration  
+   Description:
+   “Simply paste any public GitHub repository URL and we handle the rest.”
+
+2. AI-Powered Magic  
+   Description:
+   “Advanced AI analyzes your entire codebase and generates professional documentation.”
+
+3. 5-Minute Generation  
+   Description:
+   “From zero to comprehensive documentation in under 5 minutes.”
+
+4. Export Anywhere  
+   Description:
+   “Download documentation as PDF or Markdown, ready for any workflow.”
+
+Design guidelines:
+- Clean, minimal cards
+- Subtle shadow and border
+- Minimal gradient icons only
+- Professional spacing
+- No flashy colors or heavy animations
+
+================================================
+2. ADD DOCUMENT TYPES SECTION (LANDING PAGE)
+================================================
+
+Add another section below the features section.
+
+SECTION TITLE:
+“Four Document Types. One Simple Process.”
+
+Subtitle:
+“Professional documentation that follows industry standards”
+
+Create a responsive 2x2 grid of document cards.
+
+Card design:
+- Light or white surface (to contrast dark background)
+- Rounded corners
+- Subtle shadow
+- Minimal gradient badge at top
+- Professional typography
+- Clean and enterprise-grade (not colorful)
+
+------------------------------------------------
+CARD 1: README
+------------------------------------------------
+Badge: README  
+Title: README Document  
+Description:
+“Professional README with installation, usage, and contribution guidelines.”
+
+Bullets:
+- Project Overview
+- Installation Guide
+- Usage Examples
+- API Reference
+- Contribution Guidelines
+
+------------------------------------------------
+CARD 2: BRD
+------------------------------------------------
+Badge: BRD  
+Title: Business Requirements Document  
+Description:
+“Complete business analysis with user stories, objectives, and success metrics.”
+
+Bullets:
+- Executive Summary
+- Project Scope
+- User Personas
+- Success Criteria
+- Implementation Timeline
+
+------------------------------------------------
+CARD 3: TRD
+------------------------------------------------
+Badge: TRD  
+Title: Technical Requirements Document  
+Description:
+“Detailed technical architecture, APIs, and implementation specifications.”
+
+Bullets:
+- System Architecture
+- Technology Stack
+- API Documentation
+- Integration Points
+- Database Design
+
+------------------------------------------------
+CARD 4: TEST
+------------------------------------------------
+Badge: TEST  
+Title: Test Strategy Document  
+Description:
+“Comprehensive testing framework with scenarios for every aspect of your project.”
+
+Bullets:
+- Test Strategy
+- Unit Test Plans
+- Integration Tests
+- E2E Scenarios
+- Security & Performance Testing
+
+Interaction rules:
+- Subtle hover elevation
+- Cursor pointer on hover
+- Smooth transitions only
+- No heavy animations
+
+================================================
+3. ADD FOOTER LINKS WITH REAL PAGES
+================================================
+
+Extend the existing footer and make all links FUNCTIONAL.
+
+Create the following routes and pages:
+
+A. Privacy Policy  
+Route: /privacy-policy  
+Content:
+- Professional privacy policy text
+- Explain:
+  - GitHub repository access
+  - AI processing
+  - Data storage policy
+- Clean, readable layout
+
+B. Help Center  
+Route: /help  
+Content:
+- FAQ-style layout with expandable sections
+- Questions:
+  - How does Code2Docs work?
+  - Is my GitHub code stored?
+  - What documents can I generate?
+  - Can I export documents?
+
+C. Examples  
+Route: /examples  
+Content:
+- Show sample README, BRD, TRD, and TEST outputs
+- Tabs or cards layout
+- Static demo content is acceptable
+
+Ensure footer navigation correctly routes to each page.
+
+================================================
+4. ADD PDF DOWNLOAD FUNCTIONALITY
+================================================
+
+After documentation is generated, add a PDF download option.
+
+Requirements:
+- Button text: “Download as PDF”
+- Show button only after generation completes
+- One button per document type:
+  README, BRD, TRD, TEST
+
+Implementation:
+- Convert generated Markdown to PDF
+- Use a Node.js PDF library (pdfkit or equivalent)
+- Generate PDF server-side
+- Trigger browser download
+
+PDF formatting:
+- Proper document title headers
+- Clean spacing
+- Readable professional typography
+
+Add a loading state while PDF is being generated.
+
+================================================
+5. UI / UX RULES
+================================================
+
+- Professional, minimal UI
+- No excessive colors
+- Buttons should feel real and clickable
+- Smooth hover and transition effects only
+- Maintain consistency with existing design
+
+================================================
+FINAL REQUIREMENT
+================================================
+
+After all changes:
+- Landing page feels larger and complete
+- Informational sections are added
+- Footer links work correctly
+- Help Center and Privacy Policy are real pages
+- Users can download generated docs as PDF
+- Existing functionality remains stable
+- App remains production-ready
+
+Apply all changes incrementally without breaking the current application.

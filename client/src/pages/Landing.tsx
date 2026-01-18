@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { FileText, Github, Zap, BookOpen } from "lucide-react";
+import { FileText, Github, Zap, BookOpen, Clock, Download, Share2, Layers, CheckCircle } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 
 export default function Landing() {
@@ -42,9 +42,9 @@ export default function Landing() {
                   Start Generating Free
                 </Button>
               </Link>
-              <Link href="/login">
+              <Link href="/examples">
                 <Button size="lg" variant="outline" className="rounded-full px-8 gap-2">
-                  <Github className="w-5 h-5" />
+                  <BookOpen className="w-5 h-5" />
                   View Sample Docs
                 </Button>
               </Link>
@@ -53,27 +53,75 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Features Grid */}
-      <section className="py-24 relative bg-slate-950/50">
+      {/* Why Waste Time Section */}
+      <section className="py-24 relative bg-slate-950 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">Why Waste Time When AI Can Do It Better?</h2>
+            <p className="text-slate-400 text-lg">Powered by advanced AI and built for modern development teams</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <FeatureCard 
-              icon={<Zap className="w-6 h-6 text-yellow-400" />}
-              title="Instant Generation"
-              description="Turn complex codebases into readable documentation in under 60 seconds."
+              icon={<Github className="w-6 h-6 text-white" />}
+              title="Instant GitHub Integration"
+              description="Simply paste any public GitHub repository URL and we handle the rest."
               delay={0.1}
             />
             <FeatureCard 
-              icon={<FileText className="w-6 h-6 text-blue-400" />}
-              title="Comprehensive Docs"
-              description="Get BRDs, TRDs, Test Strategies, and READMEs generated automatically."
+              icon={<Zap className="w-6 h-6 text-violet-400" />}
+              title="AI-Powered Magic"
+              description="Advanced AI analyzes your entire codebase and generates professional documentation."
               delay={0.2}
             />
             <FeatureCard 
-              icon={<BookOpen className="w-6 h-6 text-green-400" />}
-              title="Always Up-to-Date"
-              description="Regenerate documentation with a single click whenever your code changes."
+              icon={<Clock className="w-6 h-6 text-blue-400" />}
+              title="5-Minute Generation"
+              description="From zero to comprehensive documentation in under 5 minutes."
               delay={0.3}
+            />
+            <FeatureCard 
+              icon={<Download className="w-6 h-6 text-green-400" />}
+              title="Export Anywhere"
+              description="Download documentation as PDF or Markdown, ready for any workflow."
+              delay={0.4}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Document Types Section */}
+      <section className="py-24 relative bg-slate-900/50 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">Four Document Types. One Simple Process.</h2>
+            <p className="text-slate-400 text-lg">Professional documentation that follows industry standards</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <DocTypeCard 
+              badge="README"
+              title="README Document"
+              description="Professional README with installation, usage, and contribution guidelines."
+              bullets={["Project Overview", "Installation Guide", "Usage Examples", "API Reference", "Contribution Guidelines"]}
+            />
+            <DocTypeCard 
+              badge="BRD"
+              title="Business Requirements"
+              description="Complete business analysis with user stories, objectives, and success metrics."
+              bullets={["Executive Summary", "Project Scope", "User Personas", "Success Criteria", "Implementation Timeline"]}
+            />
+            <DocTypeCard 
+              badge="TRD"
+              title="Technical Requirements"
+              description="Detailed technical architecture, APIs, and implementation specifications."
+              bullets={["System Architecture", "Technology Stack", "API Documentation", "Integration Points", "Database Design"]}
+            />
+            <DocTypeCard 
+              badge="TEST"
+              title="Test Strategy"
+              description="Comprehensive testing framework with scenarios for every aspect of your project."
+              bullets={["Test Strategy", "Unit Test Plans", "Integration Tests", "E2E Scenarios", "Security & Performance"]}
             />
           </div>
         </div>
@@ -81,8 +129,43 @@ export default function Landing() {
 
       {/* Footer */}
       <footer className="py-12 border-t border-white/5 bg-slate-950">
-        <div className="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
-          <p>© {new Date().getFullYear()} Code2Docs. Built for developers.</p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div className="col-span-1 md:col-span-1">
+              <h3 className="text-white font-bold text-lg mb-4">Code2Docs</h3>
+              <p className="text-slate-500 text-sm leading-relaxed">
+                Automating technical documentation for modern engineering teams.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="text-white font-semibold mb-4">Product</h4>
+              <ul className="space-y-2 text-sm text-slate-500">
+                <li><Link href="/register" className="hover:text-white transition-colors">Get Started</Link></li>
+                <li><Link href="/examples" className="hover:text-white transition-colors">Examples</Link></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-white font-semibold mb-4">Support</h4>
+              <ul className="space-y-2 text-sm text-slate-500">
+                <li><Link href="/help" className="hover:text-white transition-colors">Help Center</Link></li>
+                <li><a href="mailto:support@code2docs.com" className="hover:text-white transition-colors">Contact Us</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-white font-semibold mb-4">Legal</h4>
+              <ul className="space-y-2 text-sm text-slate-500">
+                <li><Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+                <li><Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="pt-8 border-t border-white/5 text-center text-slate-600 text-sm">
+            <p>© {new Date().getFullYear()} Code2Docs. Built for developers.</p>
+          </div>
         </div>
       </footer>
     </div>
@@ -96,13 +179,38 @@ function FeatureCard({ icon, title, description, delay }: { icon: React.ReactNod
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.5 }}
       viewport={{ once: true }}
-      className="glass-card p-8 rounded-2xl hover:bg-white/10 transition-colors"
+      className="glass-card p-8 rounded-2xl hover:bg-white/5 transition-colors border border-white/5"
     >
       <div className="bg-white/5 w-12 h-12 rounded-xl flex items-center justify-center mb-6 border border-white/10">
         {icon}
       </div>
-      <h3 className="text-xl font-bold text-white mb-3 font-display">{title}</h3>
-      <p className="text-slate-400 leading-relaxed">{description}</p>
+      <h3 className="text-lg font-bold text-white mb-3 font-display">{title}</h3>
+      <p className="text-slate-400 text-sm leading-relaxed">{description}</p>
     </motion.div>
+  );
+}
+
+function DocTypeCard({ badge, title, description, bullets }: { badge: string, title: string, description: string, bullets: string[] }) {
+  return (
+    <div className="bg-slate-200 rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+      <div className="flex justify-between items-start mb-6">
+        <span className="bg-gradient-to-r from-blue-600 to-violet-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+          {badge}
+        </span>
+        <FileText className="w-6 h-6 text-slate-400" />
+      </div>
+      
+      <h3 className="text-2xl font-bold text-slate-900 mb-3 font-display">{title}</h3>
+      <p className="text-slate-600 mb-6">{description}</p>
+      
+      <ul className="space-y-2">
+        {bullets.map((bullet, i) => (
+          <li key={i} className="flex items-center text-sm text-slate-600">
+            <CheckCircle className="w-4 h-4 text-violet-500 mr-2 flex-shrink-0" />
+            {bullet}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

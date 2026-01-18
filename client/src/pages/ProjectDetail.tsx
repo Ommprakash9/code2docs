@@ -5,7 +5,7 @@ import { useGenerateDocuments, useDocument } from "@/hooks/use-documents";
 import { Navbar } from "@/components/layout/Navbar";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Loader2, FileCode, Play, CheckCircle2, AlertCircle, Clock, Copy } from "lucide-react";
+import { Loader2, FileCode, Play, CheckCircle2, AlertCircle, Clock, Copy, Download } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { useToast } from "@/hooks/use-toast";
 import { motion, AnimatePresence } from "framer-motion";
@@ -46,6 +46,12 @@ export default function ProjectDetail() {
     if (displayDoc?.content) {
       navigator.clipboard.writeText(displayDoc.content);
       toast({ title: "Copied!", description: "Content copied to clipboard." });
+    }
+  };
+
+  const downloadPDF = () => {
+    if (displayDoc?.id) {
+      window.open(`/api/documents/${displayDoc.id}/pdf`, '_blank');
     }
   };
 
@@ -133,10 +139,16 @@ export default function ProjectDetail() {
                     </span>
                   </div>
                   {displayDoc.status === "completed" && (
-                    <Button variant="ghost" size="sm" onClick={copyToClipboard} className="h-8">
-                      <Copy className="w-3.5 h-3.5 mr-2" />
-                      Copy
-                    </Button>
+                    <div className="flex gap-2">
+                      <Button variant="ghost" size="sm" onClick={downloadPDF} className="h-8">
+                        <Download className="w-3.5 h-3.5 mr-2" />
+                        PDF
+                      </Button>
+                      <Button variant="ghost" size="sm" onClick={copyToClipboard} className="h-8">
+                        <Copy className="w-3.5 h-3.5 mr-2" />
+                        Copy
+                      </Button>
+                    </div>
                   )}
                 </div>
                 

@@ -11,6 +11,9 @@ import Landing from "@/pages/Landing";
 import AuthPage from "@/pages/Auth";
 import Dashboard from "@/pages/Dashboard";
 import ProjectDetail from "@/pages/ProjectDetail";
+import Privacy from "@/pages/Privacy";
+import Help from "@/pages/Help";
+import Examples from "@/pages/Examples";
 
 function ProtectedRoute({ component: Component }: { component: React.ComponentType }) {
   const { data: user, isLoading } = useUser();
@@ -41,6 +44,11 @@ function Router() {
         <AuthPage mode="register" />
       </Route>
       
+      {/* Public Pages */}
+      <Route path="/privacy-policy" component={Privacy} />
+      <Route path="/help" component={Help} />
+      <Route path="/examples" component={Examples} />
+
       {/* Protected Routes */}
       <Route path="/dashboard">
         <ProtectedRoute component={Dashboard} />

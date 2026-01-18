@@ -5,6 +5,7 @@ import { api } from "@shared/routes";
 import { setupAuth } from "./auth";
 import { z } from "zod";
 import OpenAI from "openai";
+import PDFDocument from "pdfkit";
 
 const openai = new OpenAI({
   apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
@@ -149,6 +150,48 @@ export async function registerRoutes(
     }
 
     res.status(202).json(newDocs);
+  });
+
+  app.get("/api/documents/:id/pdf", isAuthenticated, async (req, res) => {
+    const doc = await storage.getDocument(Number(req.params.id));
+    if (!doc) return res.status(404).json({ message: "Document not found" });
+
+    const project = await storage.getProject(doc.projectId);
+    if (!project || project.userId !== req.user!.id) return res.status(403).json({ message: "Forbidden" });
+
+    // Create a PDF document
+    const docPDF = new PDFDocument();
+    
+    // Set response headers
+    res.setHeader("Content-Type", "application/pdf");
+    res.setHeader("Content-Disposition", `attachment; filename=${doc.type}-${project.repoName}.pdf`);
+
+    // Pipe the PDF to the response
+    docPDF.pipe(res);
+
+    // Add content to PDF
+    docPDF.fontSize(20).text(doc.type, { align: 'center' });
+    docPDF.moveDown();
+    
+    docPDF.fontSize(12).text(`Repository: ${project.repoUrl}`, { align: 'center' });
+    docPDF.moveDown(2);
+
+    // Simple cleaning of markdown for PDF text
+    // Remove code block markers and some basic markdown syntax for cleaner plain text
+    // In a real production app, we would use a proper markdown-to-pdf renderer
+    const cleanContent = doc.content
+      .replace(/```[\s\S]*?```/g, (match) => match.replace(/```/g, '')) // Keep code but remove backticks
+      .replace(/#{1,6} /g, '') // Remove headers
+      .replace(/\*\*/g, '') // Remove bold
+      .replace(/\*/g, '•'); // Replace bullets
+
+    docPDF.fontSize(12).text(cleanContent, {
+      align: 'left',
+      paragraphGap: 10,
+    });
+
+    // Finalize PDF file
+    docPDF.end();
   });
 
   return httpServer;
