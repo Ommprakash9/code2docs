@@ -192,21 +192,21 @@ function FeatureCard({ icon, title, description, delay }: { icon: React.ReactNod
 
 function DocTypeCard({ badge, title, description, bullets }: { badge: string, title: string, description: string, bullets: string[] }) {
   return (
-    <div className="bg-slate-200 rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+    <div className="bg-slate-900/50 backdrop-blur-sm rounded-2xl p-8 hover:shadow-[0_0_20px_rgba(139,92,246,0.1)] hover:-translate-y-1 transition-all duration-300 border border-white/5 group">
       <div className="flex justify-between items-start mb-6">
         <span className="bg-gradient-to-r from-blue-600 to-violet-600 text-white text-xs font-bold px-3 py-1 rounded-full">
           {badge}
         </span>
-        <FileText className="w-6 h-6 text-slate-400" />
+        <FileText className="w-6 h-6 text-slate-500 group-hover:text-slate-400 transition-colors" />
       </div>
       
-      <h3 className="text-2xl font-bold text-slate-900 mb-3 font-display">{title}</h3>
-      <p className="text-slate-600 mb-6">{description}</p>
+      <h3 className="text-2xl font-bold text-white mb-3 font-display">{title}</h3>
+      <p className="text-slate-400 mb-6 text-sm leading-relaxed">{description}</p>
       
       <ul className="space-y-2">
         {bullets.map((bullet, i) => (
-          <li key={i} className="flex items-center text-sm text-slate-600">
-            <CheckCircle className="w-4 h-4 text-violet-500 mr-2 flex-shrink-0" />
+          <li key={i} className="flex items-center text-sm text-slate-400">
+            <CheckCircle className="w-4 h-4 text-violet-500/70 mr-2 flex-shrink-0" />
             {bullet}
           </li>
         ))}
